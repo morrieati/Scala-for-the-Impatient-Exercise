@@ -1,13 +1,7 @@
 object main {
   def main(args: Array[String]): Unit = {
-    def replacementArray(nums: Array[Int]) = {
-      for (i <- nums.indices if i % 2 == 1) {
-        val temp = nums(i - 1)
-        nums(i - 1) = nums(i)
-        nums(i) = temp
-      }
-      nums
-    }
-    replacementArray(Array(1, 2, 3, 4, 5))
+    def generateNewReplacementArray(nums: Array[Int]) =
+      for (i <- nums.indices) yield if (i % 2 == 1) nums(i - 1) else if (i == nums.length - 1) nums(i) else nums(i + 1)
+    generateNewReplacementArray(Array(1, 2, 3, 4, 5))
   }
 }
